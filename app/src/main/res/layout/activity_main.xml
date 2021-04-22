@@ -21,6 +21,11 @@
         app:bottomBlockScale="0.5"
         app:peakMode="peakmode_average"
         app:secPerBlock="0.1" />
+    <Button
+        android:id="@+id/file"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose a file"/>
 
     <ProgressBar
         android:id="@+id/progressBar"

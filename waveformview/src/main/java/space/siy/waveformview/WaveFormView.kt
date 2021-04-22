@@ -9,6 +9,7 @@ import android.graphics.Shader
 import android.support.v4.media.session.MediaControllerCompat
 import android.support.v4.media.session.PlaybackStateCompat
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 
@@ -44,12 +45,14 @@ class WaveFormView(
     context: Context,
     attr: AttributeSet
   ) : this(context, attr, 0)
+  private val TAG = "WaveFormView"
 
   /**
    * Used to retrieve the values defined in the layout XML
    */
-  private val lp = context.obtainStyledAttributes(attr, R.styleable.WaveFormView, defStyleAttr, 0)
 
+
+  private var lp = context.obtainStyledAttributes(attr, R.styleable.WaveFormView, defStyleAttr, 0)
   companion object {
     /**
      * Flag to use average in specific range
@@ -116,7 +119,8 @@ class WaveFormView(
   /**
    * Width each block
    */
-  var blockWidth = lp.getFloat(R.styleable.WaveFormView_blockWidth, 10f)
+
+  var blockWidth = lp.getDimension(R.styleable.WaveFormView_blockWidth, 10f)
     set(value) {
       field = value
       blockPaint.strokeWidth = blockWidth - 2

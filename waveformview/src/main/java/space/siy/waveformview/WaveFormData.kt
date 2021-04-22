@@ -119,7 +119,7 @@ class WaveFormData private constructor(
     constructor(
         context: Context,
         uri: Uri,
-        headers: Map<String, String>
+        headers: Map<String, String>?
     ) {
       extractor.setDataSource(context, uri, headers)
       init()

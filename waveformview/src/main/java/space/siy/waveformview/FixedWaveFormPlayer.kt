@@ -8,6 +8,7 @@ import android.media.AudioManager
 import android.media.AudioManager.AUDIOFOCUS_GAIN_TRANSIENT
 import android.media.AudioManager.OnAudioFocusChangeListener
 import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Build
 import android.util.Log
 import kotlinx.coroutines.CoroutineScope
@@ -19,8 +20,8 @@ import kotlinx.coroutines.withContext
 
 @Suppress("DEPRECATION")
 class FixedWaveFormPlayer(
-    private val filePath: String,
-    context: Context
+        private val uri: Uri,
+        private val context: Context
 ) : OnAudioFocusChangeListener {
 
   // public apis
@@ -61,7 +62,7 @@ class FixedWaveFormPlayer(
     // Initialize MediaPlayer
     try {
       player = MediaPlayer()
-      player?.setDataSource(filePath)
+      player?.setDataSource(context,uri)
       player?.setOnPreparedListener {
         duration = player?.duration ?: 0
         // Notify complete
@@ -118,7 +119,7 @@ class FixedWaveFormPlayer(
     if (data.isEmpty()) {
       dataLoadingJob?.cancel()
       dataLoadingJob = CoroutineScope(Dispatchers.Main).launch {
-        waveFormDataFactory = withContext(Dispatchers.IO) { WaveFormData.Factory(filePath) }
+        waveFormDataFactory = withContext(Dispatchers.IO) { WaveFormData.Factory(context,uri,null) }
         if (dataLoadingJob?.isActive == true) {
           waveFormDataFactory?.build(factoryCallback)
         }

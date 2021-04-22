@@ -108,4 +108,12 @@
       app:layout_constraintStart_toStartOf="parent"
       tools:text="1000 ms"
   />
+  <Button
+      android:id="@+id/file"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Choose a file"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      android:layout_margin="10dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,6 +26,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Choose a file"/>
+    <Button
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next view"
+        android:layout_gravity="end"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
